@@ -1,3 +1,4 @@
+from kivy.uix.stacklayout import StackLayout
 from constants import *
 from kivy.config import Config
 from work_with_file import FamilyTree
@@ -24,6 +25,7 @@ class MyApp(App):
         self.manager = ScreenManager()
         self.manager.add_widget(self.main_screen())
         self.manager.add_widget(self.find_screen())
+        self.manager.add_widget(Screen(name='info'))
 
     def change_screen(self, screen):
         """
@@ -32,7 +34,28 @@ class MyApp(App):
         self.manager.current = screen
         self.manager.transition.stop()
 
+    def info_ancestors(self, instance):
+        """
+            Вывод подробной инфы о предке
+        """
+        sl = StackLayout(**stack_layout)
+        for index, info in enumerate(eval(instance.id)[::-1]):
+            if info and index == 3:
+                sl.add_widget(Image(source='static/' + info,
+                                    size_hint=size_hint_info_with_pic,))
+            elif info:
+                sl.add_widget(Button(text=info,
+                                     size_hint=size_hint_info if index < 3 else size_hint_info_with_pic,
+                                     background_color=invisible_background_color,
+                                     color=black))
+
+        self.manager.get_screen('info').add_widget(sl)
+        self.change_screen(info_screen)
+
     def output_finded(self, name, gl):
+        """
+            Вывод найденных персон в лайаут поиска
+        """
         list_of_finded_ancestors = self.family_tree.find(name)
 
         while len(gl.children) != 1:                # производим полное удаление старых данных поиска
@@ -42,12 +65,13 @@ class MyApp(App):
         for ancestor in list_of_finded_ancestors:
             if len(gl.children) < max_of_finded_people:
                 gl.add_widget(Button(text=ancestor[0],
-                                     on_press=lambda x: print('valid'),
-                                     **row_size))
+                                     on_press=self.info_ancestors,
+                                     id=ancestor.__str__(),
+                                     **row_size,
+                                     color=black))
         else:
-            gl.add_widget(Widget())
-            if len(gl.children) % 2 == 0:
-                gl.add_widget(Widget())
+            for i in range(46 - len(gl.children)):
+                gl.add_widget(Widget(size_hint=(0, 0)))
 
     def find_screen(self):
         """
@@ -55,11 +79,8 @@ class MyApp(App):
         """
         screen = Screen(name=find_screen)
         gl = GridLayout(**find_gl)
-        gl.add_widget(TextInput(hint_text='Введите ФИО',
-                                multiline=False,
-                                on_text_validate=lambda x: self.output_finded(x.text, gl),
-                                id='search',
-                                **row_size))
+        gl.add_widget(TextInput(on_text_validate=lambda x: self.output_finded(x.text, gl),
+                                **find_input))
         gl.add_widget(Widget())
         gl.add_widget(Widget())
         screen.add_widget(gl)

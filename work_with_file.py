@@ -6,7 +6,7 @@ class FamilyTree:
         Класс по работе с данными из XML файла
     """
     def __init__(self):
-        doc = etree.parse('test.xml')
+        doc = etree.parse('static/test.xml')
         self.list_on_ancestors = []
         for ancestor in doc.findall('ancestor'):
             self.list_on_ancestors.append(tuple(map(lambda info: info.text, ancestor)))
