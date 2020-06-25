@@ -1,0 +1,23 @@
+<main>
+    <ancestor>
+        <name>ФИО *** </name>
+        <photo>Название картинки</photo>
+        <date>dd.mm.yyyy - dd.mm.yyyy</date>
+        <personal_info>Какие-то личные достижени / заслуги / интересные моменты</personal_info>
+        <family_info>Какие-то семейные достижени / заслуги / интересные моменты / воспоминания</family_info>
+    </ancestor>
+    <ancestor>
+        <name>Владислав Арефьев Никитович</name>
+        <photo>pap.jpg</photo>
+        <date>23.03.2001 - 18.04.2088</date>
+        <personal_info>Играл на гитаре, вышивал крестиком</personal_info>
+        <family_info>Сделал предложение маме на Корабле, построил семейный дом</family_info>
+    </ancestor>
+    <ancestor>
+        <name>Сименчук Анна Сергеевна</name>
+        <photo></photo>
+        <date></date>
+        <personal_info>Вкусно готовила</personal_info>
+        <family_info>Воспитала 10ых детей, поставила мужа на ноги после катастрофы</family_info>
+    </ancestor>
+</main>
