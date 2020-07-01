@@ -20,7 +20,6 @@ class MyApp(App):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        Window.add_widget(Image(source=picture_in_main))
         self.family_tree = FamilyTree()
         self.manager = ScreenManager()
         self.manager.add_widget(self.main_screen())
@@ -112,6 +111,7 @@ class MyApp(App):
         """
             Создание главного меню, которое отображается при входе
         """
+        Window.add_widget(Image(source=picture_in_main))
         screen = Screen(name=main_screen)
         bl = BoxLayout(**main_bl_props)
         bl.add_widget(Button(text='Книга',

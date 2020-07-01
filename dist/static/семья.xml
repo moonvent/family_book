@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<agelongtree date="30.06.2020" url="https://genery.com/ru">
+	<persons>
+		<person id="7" sex="M" di="30.06.2020" de="30.06.2020">
+			<fullname>...</fullname>
+			<nearest/>
+		</person>
+		<person id="6" sex="M" di="30.06.2020" de="30.06.2020">
+			<fullname>1 имя ... сын 1 отчество</fullname>
+			<sn>1 имя</sn>
+			<mn>сын 1 отчество</mn>
+			<nearest>
+				<father id="1" rel="Отец" sex="M" fullname="1 имя 1 фамилия 1 отчество"/>
+				<mother id="3" rel="Мать" sex="F" fullname="1 фамилия (1 фам. при рождении) 2 имя 2 отчество"/>
+				<sibling id="2" rel="Единокровный брат" sex="M" fullname="1 имя сын 1 имя сын 1 отчество"/>
+			</nearest>
+			<events>
+				<event id="4"/>
+			</events>
+		</person>
+		<person id="1" sex="M" di="29.06.2020" de="29.06.2020">
+			<fullname>1 имя 1 фамилия 1 отчество</fullname>
+			<sn>1 имя</sn>
+			<fn>1 фамилия</fn>
+			<mn>1 отчество</mn>
+			<age>29 дней</age>
+			<bdate>С 01.06.2020 по 20.06.2020</bdate>
+			<comment>1 коммент</comment>
+			<nearest>
+				<father id="4" rel="Отец" sex="M" fullname="1 имя имя 3 отчество 3"/>
+				<mother id="5" rel="Мать" sex="F" fullname="мать 3 мать 3 мать 3"/>
+				<child id="2" rel="Сын" sex="M" fullname="1 имя сын 1 имя сын 1 отчество"/>
+				<spouse id="3" rel="Жена" sex="F" fullname="1 фамилия (1 фам. при рождении) 2 имя 2 отчество">
+					<child id="6" rel="Сын" sex="M" fullname="1 имя ... сын 1 отчество"/>
+				</spouse>
+			</nearest>
+			<events>
+				<event id="1"/>
+				<event id="2"/>
+				<event id="3"/>
+				<event id="4"/>
+			</events>
+			<docs>
+				<doc id="1" def="1"/>
+			</docs>
+		</person>
+		<person id="4" sex="M" di="29.06.2020" de="29.06.2020">
+			<fullname>1 имя имя 3 отчество 3</fullname>
+			<sn>1 имя</sn>
+			<fn>имя 3</fn>
+			<mn>отчество 3</mn>
+			<nearest>
+				<spouse id="5" rel="Мать ребёнка" sex="F" fullname="мать 3 мать 3 мать 3">
+					<child id="1" rel="Сын" sex="M" fullname="1 имя 1 фамилия 1 отчество"/>
+				</spouse>
+			</nearest>
+			<events>
+				<event id="1"/>
+			</events>
+			<docs>
+				<doc id="2" def="1"/>
+			</docs>
+		</person>
+		<person id="2" sex="M" di="29.06.2020" de="29.06.2020">
+			<fullname>1 имя сын 1 имя сын 1 отчество</fullname>
+			<sn>1 имя</sn>
+			<fn>сын 1 имя</fn>
+			<mn>сын 1 отчество</mn>
+			<age>12 дней</age>
+			<bdate>18.06.2020</bdate>
+			<comment>коментарий к сыну певрго</comment>
+			<nearest>
+				<father id="1" rel="Отец" sex="M" fullname="1 имя 1 фамилия 1 отчество"/>
+				<sibling id="6" rel="Единокровный брат" sex="M" fullname="1 имя ... сын 1 отчество"/>
+			</nearest>
+			<events>
+				<event id="2"/>
+			</events>
+		</person>
+		<person id="3" sex="F" di="29.06.2020" de="29.06.2020">
+			<fullname>1 фамилия (1 фам. при рождении) 2 имя 2 отчество</fullname>
+			<sn>1 фамилия</sn>
+			<msn>1 фам. при рождении</msn>
+			<fn>2 имя</fn>
+			<mn>2 отчество</mn>
+			<nearest>
+				<spouse id="1" rel="Муж" sex="M" fullname="1 имя 1 фамилия 1 отчество">
+					<child id="6" rel="Сын" sex="M" fullname="1 имя ... сын 1 отчество"/>
+				</spouse>
+			</nearest>
+			<events>
+				<event id="3"/>
+				<event id="4"/>
+			</events>
+		</person>
+		<person id="5" sex="F" di="29.06.2020" de="29.06.2020">
+			<fullname>мать 3 мать 3 мать 3</fullname>
+			<sn>мать 3</sn>
+			<msn>мать 3</msn>
+			<fn>мать 3</fn>
+			<mn>мать 3</mn>
+			<nearest>
+				<spouse id="4" rel="Отец ребёнка" sex="M" fullname="1 имя имя 3 отчество 3">
+					<child id="1" rel="Сын" sex="M" fullname="1 имя 1 фамилия 1 отчество"/>
+				</spouse>
+			</nearest>
+			<events>
+				<event id="1"/>
+			</events>
+		</person>
+	</persons>
+	<events>
+		<event id="4" name="Рождение" gedname="BIRT" di="30.06.2020">
+			<alive>1</alive>
+			<persons>
+				<person id="6" role="Родился">1 имя ... сын 1 отчество</person>
+				<person id="1" role="Отец">1 имя 1 фамилия 1 отчество</person>
+				<person id="3" role="Мать">1 фамилия (1 фам. при рождении) 2 имя 2 отчество</person>
+			</persons>
+		</event>
+		<event id="1" name="Рождение" gedname="BIRT" di="29.06.2020" de="29.06.2020">
+			<alive>1</alive>
+			<date>С 01.06.2020 по 20.06.2020</date>
+			<daysleft>336</daysleft>
+			<passed>29 дней</passed>
+			<persons>
+				<person id="1" role="Родился">1 имя 1 фамилия 1 отчество</person>
+				<person id="4" role="Отец">1 имя имя 3 отчество 3</person>
+				<person id="5" role="Мать">мать 3 мать 3 мать 3</person>
+			</persons>
+		</event>
+		<event id="2" name="Рождение" gedname="BIRT" di="29.06.2020" de="29.06.2020">
+			<alive>1</alive>
+			<date>18.06.2020</date>
+			<daysleft>353</daysleft>
+			<passed>12 дней</passed>
+			<persons>
+				<person id="2" role="Родился">1 имя сын 1 имя сын 1 отчество</person>
+				<person id="1" role="Отец">1 имя 1 фамилия 1 отчество</person>
+			</persons>
+		</event>
+		<event id="3" name="Свадьба" gedname="MARR" di="29.06.2020">
+			<alive>1</alive>
+			<persons>
+				<person id="1" role="Муж">1 имя 1 фамилия 1 отчество</person>
+				<person id="3" role="Жена">1 фамилия (1 фам. при рождении) 2 имя 2 отчество</person>
+			</persons>
+		</event>
+	</events>
+	<docs>
+		<doc id="1" di="29.06.2020" de="29.06.2020">
+			<path>семья.xml.files/is1.jpg</path>
+			<title>2020-06-28_154246</title>
+			<objects>
+				<person id="1"/>
+			</objects>
+		</doc>
+		<doc id="2" di="29.06.2020" de="29.06.2020">
+			<path>семья.xml.files/is2.jpg</path>
+			<title>2020-06-28_224200</title>
+			<objects>
+				<person id="4"/>
+			</objects>
+		</doc>
+	</docs>
+	<sources/>
+	<places/>
+	<families/>
+</agelongtree>
