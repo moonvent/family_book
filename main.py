@@ -38,16 +38,28 @@ class MyApp(App):
         """
             Вывод подробной инфы о предке
         """
-        sl = StackLayout(**stack_layout)
-        for index, info in enumerate(eval(instance.id)[::-1]):
-            if info and index == 3:
-                sl.add_widget(Image(source='static/' + info,
-                                    size_hint=size_hint_info_with_pic,))
-            elif info:
-                sl.add_widget(Button(text=info,
-                                     size_hint=size_hint_info if index < 3 else size_hint_info_with_pic,
-                                     background_color=invisible_background_color,
-                                     color=black))
+        self.manager.get_screen('info').clear_widgets()
+        sl = GridLayout(**find_gl)
+
+        data = self.family_tree.find_full(instance.id)
+        print(data)
+        if data[1]:
+            sl.add_widget(Image(source='static\\' + data[1][0],
+                                # size_hint=size_hint_pic
+                                size_hint_y=data[2]))
+        for info in data[0].values():
+            if isinstance(info, str):
+                sl.add_widget(Button(**button_in_detail(info, data[2])))
+            elif info is None:
+                sl.add_widget(Widget(size_hint_y=data[2]))
+            else:
+                gl = GridLayout(**nearest_gl)
+                gl.add_widget(Button(**nearest_family))
+                for near in info:
+                    gl.add_widget(Button(**button_in_find(near.get('rel') + ': ' + near.get('fullname'),
+                                                          self.info_ancestors,
+                                                          near.get('id'))))
+                sl.add_widget(gl)
 
         self.manager.get_screen('info').add_widget(sl)
         self.change_screen(info_screen)
@@ -64,11 +76,9 @@ class MyApp(App):
 
         for ancestor in list_of_finded_ancestors:
             if len(gl.children) < max_of_finded_people:
-                gl.add_widget(Button(text=ancestor[0],
-                                     on_press=self.info_ancestors,
-                                     id=ancestor.__str__(),
-                                     **row_size,
-                                     color=black))
+                gl.add_widget(Button(**button_in_find(ancestor.get('fullname'),
+                                                      self.info_ancestors,
+                                                      ancestor.get('id'))))
         else:
             for i in range(46 - len(gl.children)):
                 gl.add_widget(Widget(size_hint=(0, 0)))
@@ -79,7 +89,19 @@ class MyApp(App):
         """
         screen = Screen(name=find_screen)
         gl = GridLayout(**find_gl)
-        gl.add_widget(TextInput(on_text_validate=lambda x: self.output_finded(x.text, gl),
+
+        def checker(instance):
+            if len(instance.text) > 2:
+                self.output_finded(instance.text, gl)
+                instance.hint_text_color = neutral
+                instance.hint_text = 'Введите ФИО'
+                instance.text = ''
+            else:
+                instance.hint_text_color = red
+                instance.hint_text = 'Введите не менее трёх символов'
+                instance.text = ''
+
+        gl.add_widget(TextInput(on_text_validate=checker,
                                 **find_input))
         gl.add_widget(Widget())
         gl.add_widget(Widget())
