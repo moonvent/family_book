@@ -1,6 +1,5 @@
 from ctypes import windll
 
-
 """
 ############################################################
     Файл со всеми константами использующимися в программе
@@ -80,7 +79,7 @@ main_bl_props = dict(orientation=horizontal,
 
 find_gl = dict(cols=2,
                padding=padding_in_find,
-               spacing=spacing_in_find,)
+               spacing=spacing_in_find, )
 
 row_size = dict(size_hint=(None, None),
                 height=row_height,
@@ -123,3 +122,20 @@ nearest_family = dict(text='Ближайшие родственники:',
                       **row_size,
                       color=black,
                       underline=True)
+
+privacy_layout = dict(orientation=vertical)
+
+unpress_label = lambda size: {'font_name': font,
+                              'color': black,
+                              'font_size': size}
+
+button_for_parents = lambda text, id_, press, size_hint, font_size: dict(text=text,
+                                                                         id=id_,
+                                                                         on_press=press,
+                                                                         # **unpress_label,
+                                                                         size_hint=size_hint,
+                                                                         font_name=font,
+                                                                         color=black,
+                                                                         font_size=font_size,
+                                                                         background_color=invisible_background_color,
+                                                                         halign='center')
