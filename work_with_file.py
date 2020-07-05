@@ -38,6 +38,7 @@ class FamilyTree:
         return tuple(list_of_finded_ancestors)
 
     def sort_need_data(self, tuple_of_data):
+        print(tuple_of_data[0])
         tuple_of_data, image = tuple_of_data
         result_dict = {}
         # if tuple_of_data.get('fullname'):
@@ -46,7 +47,8 @@ class FamilyTree:
             result_dict.update({'comment': tuple_of_data.get('comment')})
         else:
             result_dict.update({'comment': None})
-        result_dict.update({'fullname': tuple_of_data.get('fullname')})
+
+        result_dict.update({'fullname': re.sub(r'\([^)]*\)', '', tuple_of_data.get('fullname')).replace('  ', ' ')})
 
         if tuple_of_data.get('nearest'):
             result_dict.update({'nearest': tuple_of_data.get('nearest')})
@@ -54,13 +56,13 @@ class FamilyTree:
             result_dict.update({'nearest': None})
 
         if tuple_of_data.get('bdate'):
-            result_dict.update({'bdate': 'Годы жизни: ' + tuple_of_data.get('bdate')})
+            result_dict.update({'bdate': tuple_of_data.get('bdate')})
 
         result_dict['parents'] = tuple(parent for parent in tuple_of_data.get('nearest') if parent.get('rel') in ('Отец', 'Мать'))
 
-        second_half = tuple(near for near in tuple_of_data.get('nearest') if near.get('rel') in ('Жена', 'Муж'))
+        second_half = tuple(near for near in tuple_of_data.get('nearest') if near.get('rel') in ('Жена', 'Муж', 'Супруг', 'Супруга'))
         if second_half:
-            second_half[0]['rel'] = 'Супруга' if second_half[0].get('rel') == 'Жена' else 'Супруг'
+            second_half[0]['rel'] = 'Супруга' if second_half[0].get('rel') in ('Жена', 'Супруга') else 'Супруг'
             second_half[0]['fullname'] = re.sub(r'\([^)]*\)', '', second_half[0].get('fullname')).replace('  ', ' ')
 
         result_dict['second_half'] = second_half
@@ -69,8 +71,8 @@ class FamilyTree:
 
         result_dict['childrens'] = tuple(children for children in tuple_of_data.get('nearest') if children.get('rel') in ('Сын', 'Дочь'))
 
-        for item in tuple_of_data.items():
-            print(item)
+        # for item in tuple_of_data.items():
+        #     print(item)
 
         return result_dict, image
 

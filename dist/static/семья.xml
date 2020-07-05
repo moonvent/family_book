@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<agelongtree date="30.06.2020" url="https://genery.com/ru">
+<agelongtree date="05.07.2020" url="https://genery.com/ru">
 	<persons>
 		<person id="7" sex="M" di="30.06.2020" de="30.06.2020">
 			<fullname>...</fullname>
@@ -11,7 +11,7 @@
 			<mn>сын 1 отчество</mn>
 			<nearest>
 				<father id="1" rel="Отец" sex="M" fullname="1 имя 1 фамилия 1 отчество"/>
-				<mother id="3" rel="Мать" sex="F" fullname="1 фамилия (1 фам. при рождении) 2 имя 2 отчество"/>
+				<mother id="3" rel="Мать" sex="F" fullname="1_фамилия (1_фам._при_рождении) 2_имя 2_отчество"/>
 				<sibling id="2" rel="Единокровный брат" sex="M" fullname="1 имя сын 1 имя сын 1 отчество"/>
 			</nearest>
 			<events>
@@ -23,14 +23,16 @@
 			<sn>1 имя</sn>
 			<fn>1 фамилия</fn>
 			<mn>1 отчество</mn>
-			<age>29 дней</age>
+			<age>1 месяц</age>
 			<bdate>С 01.06.2020 по 20.06.2020</bdate>
 			<comment>1 коммент</comment>
 			<nearest>
-				<father id="4" rel="Отец" sex="M" fullname="1 имя имя 3 отчество 3"/>
-				<mother id="5" rel="Мать" sex="F" fullname="мать 3 мать 3 мать 3"/>
+				<father id="4" rel="Отец" sex="M" fullname="1_имя имя_3 отчество_3"/>
+				<mother id="5" rel="Мать" sex="F" fullname="мать_3 мать_3 мать_3"/>
+				<sibling id="8" rel="Брат" sex="M" fullname="1_имя 1_брат 1_отчество"/>
+				<sibling id="9" rel="Сестра" sex="F" fullname="1_фамилия 1_сестра 1_отчество"/>
 				<child id="2" rel="Сын" sex="M" fullname="1 имя сын 1 имя сын 1 отчество"/>
-				<spouse id="3" rel="Жена" sex="F" fullname="1 фамилия (1 фам. при рождении) 2 имя 2 отчество">
+				<spouse id="3" rel="Жена" sex="F" fullname="1_фамилия (1_фам._при_рождении) 2_имя 2_отчество">
 					<child id="6" rel="Сын" sex="M" fullname="1 имя ... сын 1 отчество"/>
 				</spouse>
 			</nearest>
@@ -44,29 +46,12 @@
 				<doc id="1" def="1"/>
 			</docs>
 		</person>
-		<person id="4" sex="M" di="29.06.2020" de="29.06.2020">
-			<fullname>1 имя имя 3 отчество 3</fullname>
-			<sn>1 имя</sn>
-			<fn>имя 3</fn>
-			<mn>отчество 3</mn>
-			<nearest>
-				<spouse id="5" rel="Мать ребёнка" sex="F" fullname="мать 3 мать 3 мать 3">
-					<child id="1" rel="Сын" sex="M" fullname="1 имя 1 фамилия 1 отчество"/>
-				</spouse>
-			</nearest>
-			<events>
-				<event id="1"/>
-			</events>
-			<docs>
-				<doc id="2" def="1"/>
-			</docs>
-		</person>
 		<person id="2" sex="M" di="29.06.2020" de="29.06.2020">
 			<fullname>1 имя сын 1 имя сын 1 отчество</fullname>
 			<sn>1 имя</sn>
 			<fn>сын 1 имя</fn>
 			<mn>сын 1 отчество</mn>
-			<age>12 дней</age>
+			<age>17 дней</age>
 			<bdate>18.06.2020</bdate>
 			<comment>коментарий к сыну певрго</comment>
 			<nearest>
@@ -77,12 +62,48 @@
 				<event id="2"/>
 			</events>
 		</person>
-		<person id="3" sex="F" di="29.06.2020" de="29.06.2020">
-			<fullname>1 фамилия (1 фам. при рождении) 2 имя 2 отчество</fullname>
-			<sn>1 фамилия</sn>
-			<msn>1 фам. при рождении</msn>
-			<fn>2 имя</fn>
-			<mn>2 отчество</mn>
+		<person id="8" sex="M" di="03.07.2020" de="05.07.2020">
+			<fullname>1_имя 1_брат 1_отчество</fullname>
+			<sn>1_имя</sn>
+			<fn>1_брат</fn>
+			<mn>1_отчество</mn>
+			<nearest>
+				<father id="4" rel="Отец" sex="M" fullname="1_имя имя_3 отчество_3"/>
+				<mother id="5" rel="Мать" sex="F" fullname="мать_3 мать_3 мать_3"/>
+				<sibling id="1" rel="Брат" sex="M" fullname="1 имя 1 фамилия 1 отчество"/>
+				<sibling id="9" rel="Сестра" sex="F" fullname="1_фамилия 1_сестра 1_отчество"/>
+			</nearest>
+			<events>
+				<event id="5"/>
+			</events>
+		</person>
+		<person id="4" sex="M" di="29.06.2020" de="05.07.2020">
+			<fullname>1_имя имя_3 отчество_3</fullname>
+			<sn>1_имя</sn>
+			<fn>имя_3</fn>
+			<mn>отчество_3</mn>
+			<nearest>
+				<spouse id="5" rel="Мать детей" sex="F" fullname="мать_3 мать_3 мать_3">
+					<child id="1" rel="Сын" sex="M" fullname="1 имя 1 фамилия 1 отчество"/>
+					<child id="8" rel="Сын" sex="M" fullname="1_имя 1_брат 1_отчество"/>
+					<child id="9" rel="Дочь" sex="F" fullname="1_фамилия 1_сестра 1_отчество"/>
+				</spouse>
+			</nearest>
+			<events>
+				<event id="1"/>
+				<event id="5"/>
+				<event id="6"/>
+			</events>
+			<docs>
+				<doc id="2" def="1"/>
+			</docs>
+		</person>
+		<person id="3" sex="F" di="29.06.2020" de="05.07.2020">
+			<fullname>1_фамилия (1_фам._при_рождении) 2_имя 2_отчество</fullname>
+			<sn>1_фамилия</sn>
+			<msn>1_фам._при_рождении</msn>
+			<fn>2_имя</fn>
+			<mn>2_отчество</mn>
 			<nearest>
 				<spouse id="1" rel="Муж" sex="M" fullname="1 имя 1 фамилия 1 отчество">
 					<child id="6" rel="Сын" sex="M" fullname="1 имя ... сын 1 отчество"/>
@@ -93,19 +114,39 @@
 				<event id="4"/>
 			</events>
 		</person>
-		<person id="5" sex="F" di="29.06.2020" de="29.06.2020">
-			<fullname>мать 3 мать 3 мать 3</fullname>
-			<sn>мать 3</sn>
-			<msn>мать 3</msn>
-			<fn>мать 3</fn>
-			<mn>мать 3</mn>
+		<person id="9" sex="F" di="03.07.2020" de="05.07.2020">
+			<fullname>1_фамилия 1_сестра 1_отчество</fullname>
+			<sn>1_фамилия</sn>
+			<msn>1_фамилия</msn>
+			<fn>1_сестра</fn>
+			<mn>1_отчество</mn>
 			<nearest>
-				<spouse id="4" rel="Отец ребёнка" sex="M" fullname="1 имя имя 3 отчество 3">
+				<father id="4" rel="Отец" sex="M" fullname="1_имя имя_3 отчество_3"/>
+				<mother id="5" rel="Мать" sex="F" fullname="мать_3 мать_3 мать_3"/>
+				<sibling id="1" rel="Брат" sex="M" fullname="1 имя 1 фамилия 1 отчество"/>
+				<sibling id="8" rel="Брат" sex="M" fullname="1_имя 1_брат 1_отчество"/>
+			</nearest>
+			<events>
+				<event id="6"/>
+			</events>
+		</person>
+		<person id="5" sex="F" di="29.06.2020" de="05.07.2020">
+			<fullname>мать_3 мать_3 мать_3</fullname>
+			<sn>мать_3</sn>
+			<msn>мать_3</msn>
+			<fn>мать_3</fn>
+			<mn>мать_3</mn>
+			<nearest>
+				<spouse id="4" rel="Отец детей" sex="M" fullname="1_имя имя_3 отчество_3">
 					<child id="1" rel="Сын" sex="M" fullname="1 имя 1 фамилия 1 отчество"/>
+					<child id="8" rel="Сын" sex="M" fullname="1_имя 1_брат 1_отчество"/>
+					<child id="9" rel="Дочь" sex="F" fullname="1_фамилия 1_сестра 1_отчество"/>
 				</spouse>
 			</nearest>
 			<events>
 				<event id="1"/>
+				<event id="5"/>
+				<event id="6"/>
 			</events>
 		</person>
 	</persons>
@@ -115,25 +156,25 @@
 			<persons>
 				<person id="6" role="Родился">1 имя ... сын 1 отчество</person>
 				<person id="1" role="Отец">1 имя 1 фамилия 1 отчество</person>
-				<person id="3" role="Мать">1 фамилия (1 фам. при рождении) 2 имя 2 отчество</person>
+				<person id="3" role="Мать">1_фамилия (1_фам._при_рождении) 2_имя 2_отчество</person>
 			</persons>
 		</event>
 		<event id="1" name="Рождение" gedname="BIRT" di="29.06.2020" de="29.06.2020">
 			<alive>1</alive>
 			<date>С 01.06.2020 по 20.06.2020</date>
-			<daysleft>336</daysleft>
-			<passed>29 дней</passed>
+			<daysleft>331</daysleft>
+			<passed>1 месяц</passed>
 			<persons>
 				<person id="1" role="Родился">1 имя 1 фамилия 1 отчество</person>
-				<person id="4" role="Отец">1 имя имя 3 отчество 3</person>
-				<person id="5" role="Мать">мать 3 мать 3 мать 3</person>
+				<person id="4" role="Отец">1_имя имя_3 отчество_3</person>
+				<person id="5" role="Мать">мать_3 мать_3 мать_3</person>
 			</persons>
 		</event>
 		<event id="2" name="Рождение" gedname="BIRT" di="29.06.2020" de="29.06.2020">
 			<alive>1</alive>
 			<date>18.06.2020</date>
-			<daysleft>353</daysleft>
-			<passed>12 дней</passed>
+			<daysleft>348</daysleft>
+			<passed>17 дней</passed>
 			<persons>
 				<person id="2" role="Родился">1 имя сын 1 имя сын 1 отчество</person>
 				<person id="1" role="Отец">1 имя 1 фамилия 1 отчество</person>
@@ -143,7 +184,23 @@
 			<alive>1</alive>
 			<persons>
 				<person id="1" role="Муж">1 имя 1 фамилия 1 отчество</person>
-				<person id="3" role="Жена">1 фамилия (1 фам. при рождении) 2 имя 2 отчество</person>
+				<person id="3" role="Жена">1_фамилия (1_фам._при_рождении) 2_имя 2_отчество</person>
+			</persons>
+		</event>
+		<event id="5" name="Рождение" gedname="BIRT" di="03.07.2020">
+			<alive>1</alive>
+			<persons>
+				<person id="8" role="Родился">1_имя 1_брат 1_отчество</person>
+				<person id="4" role="Отец">1_имя имя_3 отчество_3</person>
+				<person id="5" role="Мать">мать_3 мать_3 мать_3</person>
+			</persons>
+		</event>
+		<event id="6" name="Рождение" gedname="BIRT" di="03.07.2020">
+			<alive>1</alive>
+			<persons>
+				<person id="9" role="Родилась">1_фамилия 1_сестра 1_отчество</person>
+				<person id="4" role="Отец">1_имя имя_3 отчество_3</person>
+				<person id="5" role="Мать">мать_3 мать_3 мать_3</person>
 			</persons>
 		</event>
 	</events>

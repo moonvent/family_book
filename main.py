@@ -56,7 +56,7 @@ class MyApp(App):
                             size_hint=(1, .05),
                             ))
 
-        print(data)
+        # print(data)
 
         for parent in data.get('parents'):
             st.add_widget(Button(**button_for_parents(parent.get('fullname').replace(' ', '\n'),
@@ -81,14 +81,15 @@ class MyApp(App):
         else:
             st.add_widget(Label(text='Супруга' if data.get('sex') == 'М' else 'Супруг',
                                 **unpress_label(25),
-                                size_hint=(1, .1),))
+                                size_hint=(.33, .5),))
 
         if image:
             st.add_widget(Image(source='static\\' + image[0],
                                 size_hint=(.33, .5)))
         else:
             st.add_widget(Label(text='',
-                                **unpress_label(30)))
+                                **unpress_label(30),
+                                size_hint=(.33, .5)))
 
         if data.get('bro_and_sis'):
             label = 'Братья и сестры'
@@ -112,16 +113,16 @@ class MyApp(App):
                                 **unpress_label(20),
                                 size_hint=(.33, .5)))
 
-        st.add_widget(Label(text=data.get('fullname') + '\n' + data.get('bdate') if data.get('bdate') else '',
+        st.add_widget(Label(text=data.get('fullname') + ('\n' + data.get('bdate') if data.get('bdate') else ''),
                             **unpress_label(25),
                             size_hint_y=.1,
                             halign='center'))
+        # print(data)
 
         st.add_widget(Label(text=data.get('comment') if data.get('comment') else '',
                             **unpress_label(25),
                             size_hint_y=.2,
                             halign='center'))
-
 
         self.manager.get_screen('info').add_widget(sl)
         self.change_screen(info_screen)
