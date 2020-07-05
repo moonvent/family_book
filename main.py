@@ -51,7 +51,7 @@ class MyApp(App):
         st.add_widget(Label(text='Личная карточка',
                             **unpress_label(50),
                             size_hint_y=.1,))
-        st.add_widget(Label(text='Родители',
+        st.add_widget(Label(text='Родители' if len(data.get('parents')) > 0 else '',
                             **unpress_label(25),
                             size_hint=(1, .05),
                             ))
@@ -79,7 +79,7 @@ class MyApp(App):
             mini_bl.add_widget(Widget())
             st.add_widget(mini_bl)
         else:
-            st.add_widget(Label(text='Супруга' if data.get('sex') == 'М' else 'Супруг',
+            st.add_widget(Label(text='',
                                 **unpress_label(25),
                                 size_hint=(.33, .5),))
 
@@ -106,11 +106,10 @@ class MyApp(App):
                                                                self.info_ancestors,
                                                                (1, .3),
                                                                25)))
-            # mini_bl.add_widget(Widget())
             st.add_widget(mini_bl)
         else:
-            st.add_widget(Label(text='Братья и сестры',
-                                **unpress_label(20),
+            st.add_widget(Label(text='',
+                                **unpress_label(25),
                                 size_hint=(.33, .5)))
 
         st.add_widget(Label(text=data.get('fullname') + ('\n' + data.get('bdate') if data.get('bdate') else ''),
