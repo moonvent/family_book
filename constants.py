@@ -21,6 +21,7 @@ mult_font_size = 25  # размер шрифта на второстепенны
 row_height = 34  # высота ряда
 row_width = 525  # ширина ряда
 max_of_finded_people = 46  # кол-во максимальных записей на страницах поиска
+font_in_pr_page = 20  # кол-во максимальных записей на страницах поиска
 
 """
 ############################################################
@@ -139,3 +140,7 @@ button_for_parents = lambda text, id_, press, size_hint, font_size: dict(text=te
                                                                          font_size=font_size,
                                                                          background_color=invisible_background_color,
                                                                          halign='center')
+
+for_more_objects = dict(size_hint=(.33,  .35),
+                        background_color=invisible_background_color,
+                        halign='center',)

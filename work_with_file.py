@@ -61,9 +61,9 @@ class FamilyTree:
         result_dict['parents'] = tuple(parent for parent in tuple_of_data.get('nearest') if parent.get('rel') in ('Отец', 'Мать'))
 
         second_half = tuple(near for near in tuple_of_data.get('nearest') if near.get('rel') in ('Жена', 'Муж', 'Супруг', 'Супруга'))
-        if second_half:
-            second_half[0]['rel'] = 'Супруга' if second_half[0].get('rel') in ('Жена', 'Супруга') else 'Супруг'
-            second_half[0]['fullname'] = re.sub(r'\([^)]*\)', '', second_half[0].get('fullname')).replace('  ', ' ')
+        for one_person in second_half:
+            one_person['rel'] = 'Супруга' if one_person.get('rel') in ('Жена', 'Супруга') else 'Супруг'
+            one_person['fullname'] = re.sub(r'\([^)]*\)', '', one_person.get('fullname')).replace('  ', ' ')
 
         result_dict['second_half'] = second_half
 

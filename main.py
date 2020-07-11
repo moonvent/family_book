@@ -34,6 +34,66 @@ class MyApp(App):
         self.manager.current = screen
         self.manager.transition.stop()
 
+    def search_on_first_page(self, first_page_bl):
+        """
+            Создание поиска на первой странице
+        :param first_page_bl:
+        :return:
+        """
+        first_page_bl.clear_widgets()
+
+        def searching(name):
+            list_of_finded_ancestors = self.family_tree.find(name)
+            first_page_bl.clear_widgets()
+            first_page_bl.add_widget(TextInput(on_text_validate=checker,
+                                               **find_input))
+
+            for ancestor in list_of_finded_ancestors:
+                if len(first_page_bl.children) < max_of_finded_people:
+                    first_page_bl.add_widget(Button(**button_in_find(ancestor.get('fullname'),
+                                                                     self.info_ancestors,
+                                                                     ancestor.get('id'))))
+            else:
+                if 22 - len(first_page_bl.children) > 0:
+                    first_page_bl.add_widget(Widget())
+
+        def checker(instance):
+            if len(instance.text) > 2:
+                searching(instance.text)
+                instance.hint_text_color = neutral
+                instance.hint_text = 'Введите ФИО'
+                instance.text = ''
+            else:
+                instance.hint_text_color = red
+                instance.hint_text = 'Введите не менее трёх символов'
+                instance.text = ''
+
+        first_page_bl.add_widget(TextInput(on_text_validate=checker,
+                                           **find_input))
+        first_page_bl.add_widget(Widget())
+
+    def output_on_first_page(self, first_page_bl, data):
+        """
+            Вывод информации на первой странице
+        :return:
+        """
+        first_page_bl.clear_widgets()
+        for one_person in data:
+            first_page_bl.add_widget(Button(**button_for_parents(one_person.get('fullname'),
+                                                                 one_person.get('id'),
+                                                                 self.info_ancestors,
+                                                                 (1, None),
+                                                                 font_in_pr_page),
+                                            # text_size=font_in_pr_page,
+                                            height=35))
+        first_page_bl.add_widget(Widget())
+        first_page_bl.add_widget(Button(text='Вернутся к поиску',
+                                        on_press=lambda x: self.search_on_first_page(first_page_bl),
+                                        size_hint_y=None,
+                                        height=35,
+                                        **unpress_label(font_in_pr_page),
+                                        background_color=invisible_background_color))
+
     def info_ancestors(self, instance):
         """
             Вывод подробной инфы о предке
@@ -41,8 +101,9 @@ class MyApp(App):
         self.manager.get_screen('info').clear_widgets()
         sl = BoxLayout(orientation=horizontal,
                        padding=padding_in_find)
-
-        sl.add_widget(Widget())
+        first_page_bl = BoxLayout(orientation=vertical)
+        self.search_on_first_page(first_page_bl)
+        sl.add_widget(first_page_bl)
 
         data, image = self.family_tree.find_full(instance.id)
 
@@ -52,7 +113,7 @@ class MyApp(App):
                             **unpress_label(50),
                             size_hint_y=.1,))
         st.add_widget(Label(text='Родители' if len(data.get('parents')) > 0 else '',
-                            **unpress_label(25),
+                            **unpress_label(font_in_pr_page),
                             size_hint=(1, .05),
                             ))
 
@@ -63,65 +124,92 @@ class MyApp(App):
                                                       parent.get('id'),
                                                       self.info_ancestors,
                                                       (.5, .1),
-                                                      25,)))
+                                                      font_in_pr_page,)))
 
         if data.get('second_half') and len(data.get('second_half')) > 0:
-            second_half = data.get('second_half')[0]
-            mini_bl = BoxLayout(orientation=vertical,
-                                size_hint=(.33, .5))
-            mini_bl.add_widget(Label(text=second_half.get('rel'),
-                                     **unpress_label(25)))
-            mini_bl.add_widget(Button(**button_for_parents(second_half.get('fullname').replace(' ', '\n'),
-                                                           second_half.get('id'),
-                                                           self.info_ancestors,
-                                                           (1, 1),
-                                                           25),))
-            mini_bl.add_widget(Widget())
-            st.add_widget(mini_bl)
+            if len(data.get('second_half')) > 1:
+                st.add_widget(Button(text='Супруги',
+                                     on_press=lambda x: self.output_on_first_page(first_page_bl, data.get('second_half')),
+                                     **for_more_objects,
+                                     **unpress_label(font_in_pr_page)
+                                     ))
+            else:
+                second_half = data.get('second_half')[0]
+                mini_bl = BoxLayout(orientation=vertical,
+                                    size_hint=(.33,  .35),
+                                    )
+                mini_bl.add_widget(Label(text=second_half.get('rel'),
+                                         **unpress_label(font_in_pr_page)))
+                mini_bl.add_widget(Button(**button_for_parents(second_half.get('fullname').replace(' ', '\n'),
+                                                               second_half.get('id'),
+                                                               self.info_ancestors,
+                                                               (1, 1),
+                                                               font_in_pr_page),))
+                mini_bl.add_widget(Widget())
+                st.add_widget(mini_bl)
         else:
             st.add_widget(Label(text='',
-                                **unpress_label(25),
-                                size_hint=(.33, .5),))
+                                **unpress_label(font_in_pr_page),
+                                size_hint=(.33,  .35),))
 
         if image:
             st.add_widget(Image(source='static\\' + image[0],
-                                size_hint=(.33, .5)))
+                                size_hint=(.33,  .35)))
         else:
             st.add_widget(Label(text='',
                                 **unpress_label(30),
-                                size_hint=(.33, .5)))
+                                size_hint=(.33,  .35)))
 
         if data.get('bro_and_sis'):
-            label = 'Братья и сестры'
-            mini_bl = BoxLayout(orientation=vertical,
-                                size_hint=(.33, .5))
-
-            mini_bl.add_widget(Label(text=label,
-                                     **unpress_label(25),
-                                     size_hint=(1, .3),
+            if len(data.get('bro_and_sis')) > 1:
+                st.add_widget(Button(text='Братья и сестры',
+                                     on_press=lambda x: self.output_on_first_page(first_page_bl, data.get('bro_and_sis')),
+                                     **for_more_objects,
+                                     **unpress_label(font_in_pr_page)
                                      ))
-            for bro_or_sis in data.get('bro_and_sis')[:2]:
-                mini_bl.add_widget(Button(**button_for_parents(bro_or_sis.get('fullname').replace(' ', '\n'),
-                                                               bro_or_sis.get('id'),
+            else:
+                mini_bl = BoxLayout(orientation=vertical,
+                                    size_hint=(.33, .35))
+
+                mini_bl.add_widget(Label(text='Братья и сестры',
+                                         **unpress_label(25),
+                                         size_hint=(1, .3),
+                                         ))
+                mini_bl.add_widget(Button(**button_for_parents(data.get('bro_and_sis')[0].get('fullname').replace(' ', '\n'),
+                                                               data.get('bro_and_sis')[0].get('fullname').get('id'),
                                                                self.info_ancestors,
                                                                (1, .3),
                                                                25)))
-            st.add_widget(mini_bl)
+                st.add_widget(mini_bl)
         else:
             st.add_widget(Label(text='',
-                                **unpress_label(25),
-                                size_hint=(.33, .5)))
+                                **unpress_label(font_in_pr_page),
+                                size_hint=(.33, .35)))
 
         st.add_widget(Label(text=data.get('fullname') + ('\n' + data.get('bdate') if data.get('bdate') else ''),
-                            **unpress_label(25),
-                            size_hint_y=.1,
+                            **unpress_label(font_in_pr_page),
+                            size_hint_y=.05,
                             halign='center'))
         # print(data)
 
-        st.add_widget(Label(text=data.get('comment') if data.get('comment') else '',
-                            **unpress_label(25),
-                            size_hint_y=.2,
-                            halign='center'))
+        temp_data = ''
+        if data.get('comment'):
+            news_str = data.get('comment').split()
+            for part in range(6, len(news_str), 6):
+                news_str[part] += '\n'
+            data['comment'] = ' '.join(news_str)
+            if len(data.get('comment')) > 400:
+                temp_data = data.get('comment')[:400]
+                temp_data = temp_data[:temp_data.rfind(' ')] + '...'
+            else:
+                temp_data = data.get('comment')
+
+        st.add_widget(Button(text=temp_data if data.get('comment') else '',
+                             **unpress_label(font_in_pr_page),
+                             size_hint_y=.4,
+                             halign='center',
+                             background_color=invisible_background_color
+                             ))
 
         self.manager.get_screen('info').add_widget(sl)
         self.change_screen(info_screen)
