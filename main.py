@@ -28,6 +28,8 @@ class MyApp(App):
         self.manager.add_widget(self.main_screen())
         self.manager.add_widget(self.find_screen())
         self.manager.add_widget(Screen(name='info'))
+        self.icon = 'ico.ico'
+        self.title = 'Сімейне дерево'
 
     def change_screen(self, screen):
         """
