@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<agelongtree date="05.07.2020" url="https://genery.com/ru">
+<agelongtree date="11.07.2020" url="https://genery.com/ru">
 	<persons>
 		<person id="7" sex="M" di="30.06.2020" de="30.06.2020">
 			<fullname>...</fullname>
@@ -18,14 +18,14 @@
 				<event id="4"/>
 			</events>
 		</person>
-		<person id="1" sex="M" di="29.06.2020" de="29.06.2020">
+		<person id="1" sex="M" di="29.06.2020" de="11.07.2020">
 			<fullname>1 имя 1 фамилия 1 отчество</fullname>
 			<sn>1 имя</sn>
 			<fn>1 фамилия</fn>
 			<mn>1 отчество</mn>
 			<age>1 месяц</age>
 			<bdate>С 01.06.2020 по 20.06.2020</bdate>
-			<comment>1 коммент</comment>
+			<comment>1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент1 коммент</comment>
 			<nearest>
 				<father id="4" rel="Отец" sex="M" fullname="1_имя имя_3 отчество_3"/>
 				<mother id="5" rel="Мать" sex="F" fullname="мать_3 мать_3 мать_3"/>
@@ -35,12 +35,14 @@
 				<spouse id="3" rel="Жена" sex="F" fullname="1_фамилия (1_фам._при_рождении) 2_имя 2_отчество">
 					<child id="6" rel="Сын" sex="M" fullname="1 имя ... сын 1 отчество"/>
 				</spouse>
+				<spouse id="10" rel="Жена" sex="F" fullname="жена_1 (жеена_1) жена_1 отчество_жены_1"/>
 			</nearest>
 			<events>
 				<event id="1"/>
 				<event id="2"/>
 				<event id="3"/>
 				<event id="4"/>
+				<event id="7"/>
 			</events>
 			<docs>
 				<doc id="1" def="1"/>
@@ -51,7 +53,7 @@
 			<sn>1 имя</sn>
 			<fn>сын 1 имя</fn>
 			<mn>сын 1 отчество</mn>
-			<age>17 дней</age>
+			<age>23 дня</age>
 			<bdate>18.06.2020</bdate>
 			<comment>коментарий к сыну певрго</comment>
 			<nearest>
@@ -130,6 +132,19 @@
 				<event id="6"/>
 			</events>
 		</person>
+		<person id="10" sex="F" di="10.07.2020" de="10.07.2020">
+			<fullname>жена_1 (жеена_1) жена_1 отчество_жены_1</fullname>
+			<sn>жена_1</sn>
+			<msn>жеена_1</msn>
+			<fn>жена_1</fn>
+			<mn>отчество_жены_1</mn>
+			<nearest>
+				<spouse id="1" rel="Муж" sex="M" fullname="1 имя 1 фамилия 1 отчество"/>
+			</nearest>
+			<events>
+				<event id="7"/>
+			</events>
+		</person>
 		<person id="5" sex="F" di="29.06.2020" de="05.07.2020">
 			<fullname>мать_3 мать_3 мать_3</fullname>
 			<sn>мать_3</sn>
@@ -162,7 +177,7 @@
 		<event id="1" name="Рождение" gedname="BIRT" di="29.06.2020" de="29.06.2020">
 			<alive>1</alive>
 			<date>С 01.06.2020 по 20.06.2020</date>
-			<daysleft>331</daysleft>
+			<daysleft>325</daysleft>
 			<passed>1 месяц</passed>
 			<persons>
 				<person id="1" role="Родился">1 имя 1 фамилия 1 отчество</person>
@@ -173,8 +188,8 @@
 		<event id="2" name="Рождение" gedname="BIRT" di="29.06.2020" de="29.06.2020">
 			<alive>1</alive>
 			<date>18.06.2020</date>
-			<daysleft>348</daysleft>
-			<passed>17 дней</passed>
+			<daysleft>342</daysleft>
+			<passed>23 дня</passed>
 			<persons>
 				<person id="2" role="Родился">1 имя сын 1 имя сын 1 отчество</person>
 				<person id="1" role="Отец">1 имя 1 фамилия 1 отчество</person>
@@ -185,6 +200,13 @@
 			<persons>
 				<person id="1" role="Муж">1 имя 1 фамилия 1 отчество</person>
 				<person id="3" role="Жена">1_фамилия (1_фам._при_рождении) 2_имя 2_отчество</person>
+			</persons>
+		</event>
+		<event id="7" name="Свадьба" gedname="MARR" di="10.07.2020">
+			<alive>1</alive>
+			<persons>
+				<person id="1" role="Муж">1 имя 1 фамилия 1 отчество</person>
+				<person id="10" role="Жена">жена_1 (жеена_1) жена_1 отчество_жены_1</person>
 			</persons>
 		</event>
 		<event id="5" name="Рождение" gedname="BIRT" di="03.07.2020">

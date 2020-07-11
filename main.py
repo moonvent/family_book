@@ -1,4 +1,5 @@
 from kivy.uix.label import Label
+from kivy.uix.popup import Popup
 from kivy.uix.stacklayout import StackLayout
 from constants import *
 from kivy.config import Config
@@ -94,6 +95,20 @@ class MyApp(App):
                                         height=35,
                                         **unpress_label(font_in_pr_page),
                                         background_color=invisible_background_color))
+
+    def description_in_popup(self, description):
+        """
+            Модальное окно для вывода комментариев о какой-либо персона
+        :param description:
+        :return:
+        """
+        popup = Popup(title='Комментарий',
+                      title_align='center',
+                      size_hint=(None, None),
+                      size=(600, 800),
+                      content=Label(text=description)
+                      )
+        popup.open()
 
     def info_ancestors(self, instance):
         """
@@ -226,7 +241,8 @@ class MyApp(App):
                              **unpress_label(font_in_pr_page),
                              size_hint_y=.33,
                              halign='center',
-                             background_color=invisible_background_color
+                             background_color=invisible_background_color,
+                             on_press=lambda x: self.description_in_popup(data.get('comment')),
                              ))
 
         navigation_bl = BoxLayout(orientation='horizontal',
