@@ -22,6 +22,7 @@ class MyApp(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.family_tree = FamilyTree()
+        self.page, self.cursor = [], 0
         self.manager = ScreenManager()
         self.manager.add_widget(self.main_screen())
         self.manager.add_widget(self.find_screen())
@@ -105,7 +106,24 @@ class MyApp(App):
         self.search_on_first_page(first_page_bl)
         sl.add_widget(first_page_bl)
 
+        # print(instance.id)
         data, image = self.family_tree.find_full(instance.id)
+
+        # if not self.page:
+        #     self.cursor += 1
+
+        if instance.text == 'Вперед':
+            if self.cursor != len(self.page) - 1:
+                self.cursor += 1
+        elif instance.text == 'Назад':
+            if self.cursor != 0:
+                self.cursor -= 1
+        else:
+            if len(self.page) >= 1:
+                self.cursor += 1
+                del self.page[self.cursor:]
+
+            self.page.append(instance.id)
 
         st = StackLayout(size_hint_y=1)
         sl.add_widget(st)
@@ -206,10 +224,18 @@ class MyApp(App):
 
         st.add_widget(Button(text=temp_data if data.get('comment') else '',
                              **unpress_label(font_in_pr_page),
-                             size_hint_y=.4,
+                             size_hint_y=.33,
                              halign='center',
                              background_color=invisible_background_color
                              ))
+
+        navigation_bl = BoxLayout(orientation='horizontal',
+                                  size_hint_y=.1,)
+        st.add_widget(navigation_bl)
+        if self.cursor != 0 and len(self.page) >= 2:
+            navigation_bl.add_widget(Button(**navigation_buttons('Назад', str(self.page[self.cursor - 1]), self.info_ancestors)))
+        if self.cursor < len(self.page) - 1 and len(self.page) >= 2:
+            navigation_bl.add_widget(Button(**navigation_buttons('Вперед', str(self.page[self.cursor + 1]), self.info_ancestors)))
 
         self.manager.get_screen('info').add_widget(sl)
         self.change_screen(info_screen)

@@ -144,3 +144,9 @@ button_for_parents = lambda text, id_, press, size_hint, font_size: dict(text=te
 for_more_objects = dict(size_hint=(.33,  .35),
                         background_color=invisible_background_color,
                         halign='center',)
+
+navigation_buttons = lambda text, id_, press: dict(text=text,
+                                                   background_color=invisible_background_color,
+                                                   id=id_,
+                                                   on_press=press,
+                                                   **unpress_label(font_in_pr_page))

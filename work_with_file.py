@@ -38,7 +38,7 @@ class FamilyTree:
         return tuple(list_of_finded_ancestors)
 
     def sort_need_data(self, tuple_of_data):
-        print(tuple_of_data[0])
+        # print(tuple_of_data[0])
         tuple_of_data, image = tuple_of_data
         result_dict = {}
         # if tuple_of_data.get('fullname'):
